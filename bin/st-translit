@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+
+from = ARGV.shift || (warn "Usage: st-translit from to [file...]"; exit 1)
+to   = ARGV.shift || (warn "Usage: st-translit from to [file...]"; exit 1)
+print SoftwareTools.translit(ARGF.read, from, to)

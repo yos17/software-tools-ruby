@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+require 'optparse'
+
+opts = { count: false }
+OptionParser.new do |o|
+  o.on("-c") { opts[:count] = true }
+end.parse!
+
+print SoftwareTools.uniq(ARGF.read, **opts)

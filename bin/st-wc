@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+r = SoftwareTools.wc(ARGF.read)
+puts "%8d %8d %8d" % [r[:lines], r[:words], r[:chars]]

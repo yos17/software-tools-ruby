@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+require 'optparse'
+
+opts = { reverse: false, ignore_case: false, numeric: false, unique: false }
+OptionParser.new do |o|
+  o.on("-r") { opts[:reverse] = true }
+  o.on("-i") { opts[:ignore_case] = true }
+  o.on("-n") { opts[:numeric] = true }
+  o.on("-u") { opts[:unique] = true }
+end.parse!
+
+print SoftwareTools.sort(ARGF.read, **opts)

@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+require 'optparse'
+
+opts = { ignore_case: false, invert: false, line_numbers: false }
+OptionParser.new do |o|
+  o.on("-i") { opts[:ignore_case] = true }
+  o.on("-v") { opts[:invert] = true }
+  o.on("-n") { opts[:line_numbers] = true }
+end.parse!
+
+pattern = ARGV.shift || (warn "Usage: st-grep [options] pattern [file...]"; exit 1)
+print SoftwareTools.grep(pattern, ARGF.read, **opts)

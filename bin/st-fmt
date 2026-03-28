@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+
+width = 72
+width = ARGV.shift.to_i if ARGV.first =~ /^\d+$/
+print SoftwareTools.fmt(ARGF.read, width: width)

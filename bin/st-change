@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require_relative "../lib/software_tools"
+require 'optparse'
+
+opts = { global: true }
+OptionParser.new do |o|
+  o.on("-1") { opts[:global] = false }
+end.parse!
+
+pattern     = ARGV.shift || (warn "Usage: st-change pattern replacement [file...]"; exit 1)
+replacement = ARGV.shift || (warn "Usage: st-change pattern replacement [file...]"; exit 1)
+print SoftwareTools.change(ARGF.read, pattern, replacement, **opts)
